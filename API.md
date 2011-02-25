@@ -74,11 +74,13 @@ Note that it first retrieves all result rows and stores them in memory. For quer
 
 
 
-## Database#each(sql, [param, ...], [callback])
+## Database#each(sql, [param, ...], [callback], [complete_callback])
 
 Runs the SQL query with the specified parameters and calls the callback with for each result row. The function returns the Database object to allow for function chaining. The parameters are the same as the `Database#run` function, with the following differences:
 
-The signature of the callback is `function(err, row) {}`. If the result set succeeds but is empty, the callback is never called (this will change in the future). In all other cases, the callback is called once for every retrieved row. The order of calls correspond exactly to the order of rows in the result set.
+The signature of the callback is `function(err, row) {}`. If the result set succeeds but is empty, the callback is never called. In all other cases, the callback is called once for every retrieved row. The order of calls correspond exactly to the order of rows in the result set.
+
+After all row callbacks were called, the completion callback will be called if present. The first and only argument to it is the number of retrieved rows. If you specify only one function, it will be treated as row callback, if you specify two, the first (== second to last) function will be the row callback, the last function will be the completion callback.
 
 If you know that a query only returns a very limited number of rows, it might be more convenient to use `Database#all` to retrieve all rows at once.
 
@@ -152,7 +154,11 @@ The signature of the callback is `function(err, rows) {}`. If the result set is 
 
 Binds parameters, executes the statement and calls the callback for each result row. The function returns the Statement object to allow for function chaining. The parameters are the same as the Statement#run function, with the following differences:
 
-The signature of the callback is `function(err, row) {}`. If the result set succeeds but is empty, the callback is never called (this will change in the future). In all other cases, the callback is called once for every retrieved row. The order of calls correspond exactly to the order of rows in the result set. Like with `Statement#run`, the statement will not be finalized after executing this function.
+The signature of the callback is `function(err, row) {}`. If the result set succeeds but is empty, the callback is never called. In all other cases, the callback is called once for every retrieved row. The order of calls correspond exactly to the order of rows in the result set.
+
+After all row callbacks were called, the completion callback will be called if present. The first and only argument to it is the number of retrieved rows. If you specify only one function, it will be treated as row callback, if you specify two, the first (== second to last) function will be the row callback, the last function will be the completion callback.
+
+Like with `Statement#run`, the statement will not be finalized after executing this function.
 
 If you know that a query only returns a very limited number of rows, it might be more convenient to use `Statement#all` to retrieve all rows at once.
 
