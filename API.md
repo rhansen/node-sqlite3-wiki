@@ -74,7 +74,7 @@ Note that it first retrieves all result rows and stores them in memory. For quer
 
 
 
-## Database#each(sql, [param, ...], [callback], [complete_callback])
+## Database#each(sql, [param, ...], [callback], [complete])
 
 Runs the SQL query with the specified parameters and calls the callback with for each result row. The function returns the Database object to allow for function chaining. The parameters are the same as the `Database#run` function, with the following differences:
 
@@ -150,7 +150,7 @@ The signature of the callback is `function(err, rows) {}`. If the result set is 
 
 
 
-## Statement#each([param, ...], [callback])
+## Statement#each([param, ...], [callback], [complete])
 
 Binds parameters, executes the statement and calls the callback for each result row. The function returns the Statement object to allow for function chaining. The parameters are the same as the Statement#run function, with the following differences:
 
