@@ -1,6 +1,5 @@
 # API
 
-`node-sqlite3` has built-in function call serialization and automatically waits before executing a blocking action until no other action is pending. This means that it's safe start calling functions on the database object even if it is not yet fully opened. The `Database#close()` function will wait until all pending queries are completed before closing the database. To control serialization and parallelization of queries, see the *Control Flow* section of this document. For debugging aid, consult the *Error Messages* section.
 
 ## new sqlite3.Database(filename, [mode], [callback])
 
