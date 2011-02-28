@@ -80,7 +80,7 @@ Runs the SQL query with the specified parameters and calls the callback with for
 
 The signature of the callback is `function(err, row) {}`. If the result set succeeds but is empty, the callback is never called. In all other cases, the callback is called once for every retrieved row. The order of calls correspond exactly to the order of rows in the result set.
 
-After all row callbacks were called, the completion callback will be called if present. The first and only argument to it is the number of retrieved rows. If you specify only one function, it will be treated as row callback, if you specify two, the first (== second to last) function will be the row callback, the last function will be the completion callback.
+After all row callbacks were called, the completion callback will be called if present. The first argument is an error object, and the second argument is the number of retrieved rows. If you specify only one function, it will be treated as row callback, if you specify two, the first (== second to last) function will be the row callback, the last function will be the completion callback.
 
 If you know that a query only returns a very limited number of rows, it might be more convenient to use `Database#all` to retrieve all rows at once.
 
@@ -156,7 +156,7 @@ Binds parameters, executes the statement and calls the callback for each result 
 
 The signature of the callback is `function(err, row) {}`. If the result set succeeds but is empty, the callback is never called. In all other cases, the callback is called once for every retrieved row. The order of calls correspond exactly to the order of rows in the result set.
 
-After all row callbacks were called, the completion callback will be called if present. The first and only argument to it is the number of retrieved rows. If you specify only one function, it will be treated as row callback, if you specify two, the first (== second to last) function will be the row callback, the last function will be the completion callback.
+After all row callbacks were called, the completion callback will be called if present. The first argument is an error object, and the second argument is the number of retrieved rows. If you specify only one function, it will be treated as row callback, if you specify two, the first (== second to last) function will be the row callback, the last function will be the completion callback.
 
 Like with `Statement#run`, the statement will not be finalized after executing this function.
 
