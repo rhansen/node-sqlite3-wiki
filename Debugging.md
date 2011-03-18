@@ -17,3 +17,11 @@ When you throw an error from a callback passed to any of the database functions,
 Note that you shouldn't enable the verbose mode in a production setting as the performance penalty for collecting stack traces is quite high.
 
 Verbose mode currently does not add stack trace information to error objects emitted on Statement or Database objects.
+
+## Database##on('trace', [callback])
+
+When enabled, the `trace` event is emitted whenver a query is run. The first and only parameter to the callback is the SQL string that was sent to the database.
+
+If you execute statements from this callback, make sure that you don't enter an infinite loop!
+
+**To enable these events, call `Database#configure('trace', true);`**
