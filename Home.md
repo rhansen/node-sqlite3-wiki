@@ -5,3 +5,4 @@
 * [API documentation](https://github.com/developmentseed/node-sqlite3/wiki/API)
 * [Query serialization/parallelization](https://github.com/developmentseed/node-sqlite3/wiki/Control-Flow)
 * [Debugging](https://github.com/developmentseed/node-sqlite3/wiki/Debugging)
+* [Extensions](https://github.com/developmentseed/node-sqlite3/wiki/Extensions)
