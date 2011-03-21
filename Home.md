@@ -6,3 +6,4 @@
 * [Query serialization/parallelization](https://github.com/developmentseed/node-sqlite3/wiki/Control-Flow)
 * [Debugging](https://github.com/developmentseed/node-sqlite3/wiki/Debugging)
 * [Extensions](https://github.com/developmentseed/node-sqlite3/wiki/Extensions)
+* [Caching](https://github.com/developmentseed/node-sqlite3/wiki/Caching)
