@@ -20,8 +20,12 @@ Verbose mode currently does not add stack trace information to error objects emi
 
 ## Database#on('trace', [callback])
 
-When enabled, the `trace` event is emitted whenver a query is run. The first and only parameter to the callback is the SQL string that was sent to the database. The event is emitted as soon as the query is *executed* (e.g. with `.run()` or `.get()`). A single statement may be emitted more once. `EXPLAIN` statements will not trigger an event, so it's safe to pipe all SQL queries you receive from this event back into the database with a `EXPLAIN QUERY PLAN` prefixed.
+The `trace` event is emitted whenever a query is run. The first and only parameter to the callback is the SQL string that was sent to the database. The event is emitted as soon as the query is *executed* (e.g. with `.run()` or `.get()`). A single statement may be emitted more once. `EXPLAIN` statements will not trigger an event, so it's safe to pipe all SQL queries you receive from this event back into the database prefixed with a `EXPLAIN QUERY PLAN`.
 
 If you execute statements from this callback, make sure that you don't enter an infinite loop!
 
-**To enable these events, call `Database#configure('trace', true);`**
+## Database#on('profile', [callback])
+
+The `profile` event is emitted whenever a query is finished. The first parameter is the SQL string that was sent to the database, the second parameter is the time approximate time it took to run in milliseconds. The event is emitted after the query completed.
+
+If you execute statements from this callback, make sure that you don't enter an infinite loop!
