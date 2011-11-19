@@ -1,5 +1,7 @@
 **NOTE:** Requires Visual Studio 2010. I didn't test with the Express version, but it *should* do.
 
+**NOTE 2:** Windows support is currently only in the [`windows` branch](https://github.com/developmentseed/node-sqlite3/tree/windows)
+
 ## 1. Build node
 
 * Download node (either the tarball or via a git clone; **THE INSTALLER WON'T DO!**)
