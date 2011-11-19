@@ -7,3 +7,4 @@
 * [Debugging](https://github.com/developmentseed/node-sqlite3/wiki/Debugging)
 * [Extensions](https://github.com/developmentseed/node-sqlite3/wiki/Extensions)
 * [Caching](https://github.com/developmentseed/node-sqlite3/wiki/Caching)
+* [Building on Windows](https://github.com/developmentseed/node-sqlite3/wiki/Building-On-Windows)
