@@ -26,7 +26,7 @@ Runs the SQL query with the specified parameters and calls the callback afterwar
 * `sql`: The SQL query to run. If the SQL query is invalid and a callback was passed to the function, it is called with an error object containing the error message from SQLite. If no callback was passed and preparing fails, an `error` event will be emitted on the underlying Statement object.
 
 * `param, ...` *(optional)*: When the SQL statement contains placeholders, you can pass them in here. They will be bound to the statement before it is executed. There are three ways of passing bind parameters: directly in the function's arguments, as an array, and as an object for named parameters.
-
+```javascript
       // Directly in the function arguments.
       db.run("UPDATE tbl SET name = ? WHERE id = ?", "bar", 2);
 
@@ -38,7 +38,7 @@ Runs the SQL query with the specified parameters and calls the callback afterwar
           $id: 2,
           $name: "bar"
       });
-
+```
   Named parameters can be prefixed with `:name`, `@name` and `$name`. We recommend using `$name` since JavaScript allows using the dollar sign as a variable name without having to escape it. You can also specify a numeric index after a `?` placeholder. These correspond to the position in the array. Note that placeholder indexes start at 1 in SQLite. `node-sqlite3` maps arrays to start with one so that you don't have to specify an empty value as the first array element (with index 0). You can also use numeric object keys to bind values. Note that in this case, the first index is 1:
 
       db.run("UPDATE tbl SET name = ?5 WHERE id = ?", {
