@@ -40,11 +40,12 @@ Runs the SQL query with the specified parameters and calls the callback afterwar
       });
 ```
   Named parameters can be prefixed with `:name`, `@name` and `$name`. We recommend using `$name` since JavaScript allows using the dollar sign as a variable name without having to escape it. You can also specify a numeric index after a `?` placeholder. These correspond to the position in the array. Note that placeholder indexes start at 1 in SQLite. `node-sqlite3` maps arrays to start with one so that you don't have to specify an empty value as the first array element (with index 0). You can also use numeric object keys to bind values. Note that in this case, the first index is 1:
-
+```javascript
       db.run("UPDATE tbl SET name = ?5 WHERE id = ?", {
           1: 2,
           5: "bar"
       });
+```
 
   This binds the first placeholder (`$id`) to `2` and the placeholder with index `5` to `"bar"`. While this is valid in SQLite and `node-sqlite3`, it is not recommended to mix different placeholder types.
 
