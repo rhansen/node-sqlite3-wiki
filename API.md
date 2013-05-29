@@ -163,4 +163,4 @@ Like with `Statement#run`, the statement will not be finalized after executing t
 
 If you know that a query only returns a very limited number of rows, it might be more convenient to use `Statement#all` to retrieve all rows at once.
 
-There is currently no way to abort execution.
+There is currently no way to abort execution!
