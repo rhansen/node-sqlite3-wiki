@@ -6,6 +6,10 @@
 
 Note: Microsoft is always changing the names of things so it is hard to know exactly what is needed. If you get through these install steps successfully please edit this wiki with how you set up Visual Studio.
 
+Note: you may also need the Win SDK <http://www.microsoft.com/en-us/download/details.aspx?displayLang=en&id=8279> and the
+
+Note: Another link to Visual Studio 2010 (`wdexpress_full.exe`) is <http://go.microsoft.com/?linkid=9816758>
+
 ## 2. Install Node
 
 Make sure you have the latest node - either v0.8.x or v0.10.x. v0.10.x is ideal since it will contain the latest `node-gyp`. `node-gyp` is critical for building `node-sqlite3`.
@@ -32,4 +36,3 @@ TIP: to avoid full recompiles you can install `node-gyp` globally and just do:
 ## 4. Troubleshooting
 
 Create an issue if you have trouble. Please provide as much detail about what versions you are using and the exact errors you encountered.
-
