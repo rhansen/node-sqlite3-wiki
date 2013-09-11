@@ -1,12 +1,12 @@
-As of `v2.1.16` (and pull request [#192](https://github.com/developmentseed/node-sqlite3/pull/192)) node-sqlite3 now defaults to installing a pre-built binary of node_sqlite3.node (with a statically link libsqlite3) when available.
+As of `v2.1.16` (and pull request [#192](https://github.com/developmentseed/node-sqlite3/pull/192)) `node-sqlite3` now defaults to installing a pre-built binary of `node_sqlite3.node` (with a statically linked libsqlite3) when available.
 
-Binaries are versioned based on the node version, platform, and architecture. Given this amounts to a lot of variants we have not yet created binaries for all possible combinations.
+Binaries are versioned based on the node version, platform, and architecture. Given this amounts many versions we have not yet created binaries for all possible combinations.
 
 Available Binaries [are listed here](http://node-sqlite3.s3.amazonaws.com/index.html?path=Release/).
 
-The node versioning is not based on node's semver string but rather the usually less frequently changing C++ ABI number. This is available in javascript `process.versions.modules` as of [`>= v0.10.4 >= v0.11.7`](https://github.com/joyent/node/commit/ccabd4a6fa8a6eb79d29bc3bbe9fe2b6531c2d8e)
+The node versioning is the C++ ABI number rather than on node's semver string. This value is available in javascript `process.versions.modules` as of [`>= v0.10.4 >= v0.11.7`](https://github.com/joyent/node/commit/ccabd4a6fa8a6eb79d29bc3bbe9fe2b6531c2d8e) and in C++ as the `NODE_MODULE_VERSION` define much earlier;
 
-Below is a listing of how node versions crosswalk with the `process.versions.modules` value (known as `NODE_MODULE_VERSION` in C++):
+Below is a listing of how node versions crosswalk with the `process.versions.modules` value:
 
 ```js
 { '0.6.3': 1,
