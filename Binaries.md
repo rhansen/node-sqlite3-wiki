@@ -35,6 +35,8 @@ This will drop a tarball (`.tar.gz`) and a shasum (`sha1.txt`) in the `stage/` f
 
 You can also run `npm install --stage` from within a `node-sqlite3` checkout from github.
 
+To submit your built `tar.gz` please email it to dane - at - mapbox.com. In the future we plan to automate this.
+
 ### Available binaries
 
 Currently available binaries [are listed here](http://node-sqlite3.s3.amazonaws.com/index.html?path=Release/).
