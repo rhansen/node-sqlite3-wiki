@@ -62,6 +62,9 @@ ${configuration folder}/node-sqlite3-${MAJOR}.${MINOR}.${ABI}-node-v${ABI}-${pla
  - `platform` matches node's `process.platform` like `linux`, `darwin`, and `win32`
  - `arch` matches node's `process.arch` like `x64` or `ia32`
 
+
+### Crosswalking node version to node module ABI
+
 Below is a listing of how node versions crosswalk with the `process.versions.modules` value:
 
 ```js
