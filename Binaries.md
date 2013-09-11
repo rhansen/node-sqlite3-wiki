@@ -167,3 +167,14 @@ Below is a listing of how node versions crosswalk with the `process.versions.mod
   '0.11.6': 12,
   '0.11.7': 12 }
 ```
+
+## Code implementation
+
+- `package.json` has an `install` target that points at [`./build.js`](https://github.com/developmentseed/node-sqlite3/blob/master/build.js)
+- `build.js` can be run directly but will also properly handle arguments passed to `npm install`
+- A small module called [`binary_name.js`](https://github.com/developmentseed/node-sqlite3/blob/master/lib/binary_name.js) is used both in `build.js` and [`lib/sqlite3.js`](https://github.com/developmentseed/node-sqlite3/blob/master/lib/sqlite3.js#L1-L8) to abstract out the details of what a given binary build is called and where it lives.
+- Binaries are checked for on s3 and if not found a source compile will be the fallback
+- sha1 sums are used to validate binaries before testing
+- a naive test of whether the module can be required is done and a source compile is the fallback if this fails
+- generally this code is quite rough - I plan (@springmeyer) to clean it up eventually into a stand alone module any developer of a C++ addon could use and contribute to.
+- A few scripts live in [build-util](https://github.com/developmentseed/node-sqlite3/tree/master/build-util) that I use to rebuild binaries on mac and upload them to s3 - this will be cleaned up and integrated into js eventually
