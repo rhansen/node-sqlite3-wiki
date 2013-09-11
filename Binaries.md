@@ -4,7 +4,7 @@ Binaries are versioned based on the node version, platform, and architecture. Gi
 
 Available Binaries [are listed here](http://node-sqlite3.s3.amazonaws.com/index.html?path=Release/).
 
-The node versioning is the C++ ABI number rather than on node's semver string. This value is available in javascript `process.versions.modules` as of [`>= v0.10.4 >= v0.11.7`](https://github.com/joyent/node/commit/ccabd4a6fa8a6eb79d29bc3bbe9fe2b6531c2d8e) and in C++ as the `NODE_MODULE_VERSION` define much earlier;
+The node versioning uses the C++ ABI number rather node's semver string. This value is available in javascript `process.versions.modules` as of [`>= v0.10.4 >= v0.11.7`](https://github.com/joyent/node/commit/ccabd4a6fa8a6eb79d29bc3bbe9fe2b6531c2d8e) and in C++ as the `NODE_MODULE_VERSION` define much earlier. Currently the `node-sqlite3` build scripts access this value only via `process.versions.modules` so for versions before `v0.10.4` the `v8` `MAJOR.MINOR` is used as a proxy.
 
 Below is a listing of how node versions crosswalk with the `process.versions.modules` value:
 
