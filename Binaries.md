@@ -1,5 +1,8 @@
 As of `v2.1.16` (and pull request [#192](https://github.com/developmentseed/node-sqlite3/pull/192)) `node-sqlite3` now defaults to installing a pre-built binary of `node_sqlite3.node` (with a statically linked `libsqlite3`) when available.
 
+### Background
+
+The Node.js project [is discussing the design of a system for binary deployments](https://github.com/isaacs/npm/issues/1891) and a build farm for C++ modules like `node-sqlite3`. But since this does not exist yet the approach described below for `node-sqlite3` should be considered a stopgap solution. Once a better, official system is available we can replace this approach, but until then this should help many users of `node-sqlite3` get running quickly.
 
 ### Forcing a source compile
 
