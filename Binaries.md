@@ -4,6 +4,12 @@ As of `v2.1.16` (and pull request [#192](https://github.com/developmentseed/node
 
 The Node.js project [is discussing the design of a system for binary deployments](https://github.com/isaacs/npm/issues/1891) and a build farm for C++ modules like `node-sqlite3`. But since this does not exist yet the approach described below for `node-sqlite3` should be considered a stopgap solution. Once a better, official system is available we can replace this approach, but until then this should help many users of `node-sqlite3` get running quickly. Thanks to @TryGhost for helping test this system.
 
+### TODO
+
+- https://github.com/developmentseed/node-sqlite3/issues/193
+- Move configuration to a json file - `binary-deploy.json`?
+- Clean up and turn into a module all the js code that implements support for remote binaries.
+
 ### Forcing a source compile
 
 To force building from source do:
