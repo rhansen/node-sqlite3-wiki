@@ -21,7 +21,7 @@ To request an (additional) `arch` be installed that is different from the value 
 
 ```sh
 npm install sqlite3 --target_arch=ia32
-````
+```
 
 ### Creating new binaries
 
