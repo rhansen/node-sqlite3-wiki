@@ -23,6 +23,12 @@ To request an (additional) `arch` be installed that is different from the value 
 npm install sqlite3 --target_arch=ia32
 ```
 
+### Missing binaries
+
+We have not yet built binaries for all possible variants. Here are the ones that are most requested and not available as of `Sept 10, 2013`:
+
+<img src="https://raw.github.com/wiki/developmentseed/node-sqlite3/404-binaries.png"/>
+
 ### Creating new binaries
 
 Users that find a binary is not available for their platform are encouraged to trigger a custom source compile that will package a binary for later distribution. To do this run:
