@@ -1,4 +1,4 @@
-As of `v2.1.16` (and pull request [#192](https://github.com/developmentseed/node-sqlite3/pull/192)) `node-sqlite3` now defaults to installing a pre-built binary of `node_sqlite3.node` (with a statically linked libsqlite3) when available.
+As of `v2.1.16` (and pull request [#192](https://github.com/developmentseed/node-sqlite3/pull/192)) `node-sqlite3` now defaults to installing a pre-built binary of `node_sqlite3.node` (with a statically linked `libsqlite3`) when available.
 
 
 ### Forcing a source compile
