@@ -43,9 +43,18 @@ Currently available binaries [are listed here](http://node-sqlite3.s3.amazonaws.
 
 ### Binary versioning 
 
-Binaries are versioned based on the node version, platform, and architecture. Given this amounts many versions we have not yet created binaries for all possible combinations.
+Binaries are versioned based on the `node-sqlite3` version, node version, platform, and architecture. Given this amounts many versions we have not yet created binaries for all possible combinations.
 
-The node versioning uses the C++ ABI number rather node's semver string. This value is available in javascript `process.versions.modules` as of [`>= v0.10.4 >= v0.11.7`](https://github.com/joyent/node/commit/ccabd4a6fa8a6eb79d29bc3bbe9fe2b6531c2d8e) and in C++ as the `NODE_MODULE_VERSION` define much earlier. Currently the `node-sqlite3` build scripts access this value only via `process.versions.modules` so for versions before `v0.10.4` the `v8` `MAJOR.MINOR` is used as a proxy.
+Specifically, versioning works like this:
+
+```sh
+${configuration folder}/node-sqlite3-${MAJOR}.${MINOR}.${ABI}-node-v${ABI}-${platform}-${arch}.tar.gz
+```
+ - configuration folder - 'Release' or 'Debug'
+ - node-sqlite3 `MAJOR` and `MINOR` match the semver values for the given release. The `ABI` is a special incrementing letter that marks new versions of the c++ code.
+ - The node versioning uses the C++ `ABI` number rather node's semver string. This value is available in javascript `process.versions.modules` as of [`>= v0.10.4 >= v0.11.7`](https://github.com/joyent/node/commit/ccabd4a6fa8a6eb79d29bc3bbe9fe2b6531c2d8e) and in C++ as the `NODE_MODULE_VERSION` define much earlier. Currently the `node-sqlite3` build scripts access this value only via `process.versions.modules` so for versions before `v0.10.4` the `v8` `MAJOR.MINOR` is used as a proxy.
+ - `platform` matches node's `process.platform` like `linux`, `darwin`, and `win32`
+ - `arch` matches node's `process.arch` like `x64` or `ia32`
 
 Below is a listing of how node versions crosswalk with the `process.versions.modules` value:
 
