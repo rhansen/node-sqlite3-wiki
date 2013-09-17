@@ -1,5 +1,14 @@
 As of `v2.1.16` (and pull request [#192](https://github.com/developmentseed/node-sqlite3/pull/192)) `node-sqlite3` now defaults to installing a pre-built binary of `node_sqlite3.node` (with a statically linked `libsqlite3`) when available.
 
+### Background
+
+The Node.js project [is discussing the design of a system for binary deployments](https://github.com/isaacs/npm/issues/1891) and a build farm for C++ modules like `node-sqlite3`. But since this does not exist yet the approach described below for `node-sqlite3` should be considered a stopgap solution. Once a better, official system is available we can replace this approach, but until then this should help many users of `node-sqlite3` get running quickly. Thanks to @TryGhost for helping test this system.
+
+### TODO
+
+- https://github.com/developmentseed/node-sqlite3/issues/193
+- Move configuration to a json file - `binary-deploy.json`?
+- Clean up and turn into a module all the js code that implements support for remote binaries.
 
 ### Forcing a source compile
 
@@ -22,6 +31,12 @@ To request an (additional) `arch` be installed that is different from the value 
 ```sh
 npm install sqlite3 --target_arch=ia32
 ```
+
+### Missing binaries
+
+We have not yet built binaries for all possible variants. Here are the ones that are most requested and not available as of `Sept 10, 2013`:
+
+<img src="https://raw.github.com/wiki/developmentseed/node-sqlite3/404-binaries.png"/>
 
 ### Creating new binaries
 
@@ -55,6 +70,9 @@ ${configuration folder}/node-sqlite3-${MAJOR}.${MINOR}.${ABI}-node-v${ABI}-${pla
  - The node versioning uses the C++ `ABI` number rather node's semver string. This value is available in javascript `process.versions.modules` as of [`>= v0.10.4 >= v0.11.7`](https://github.com/joyent/node/commit/ccabd4a6fa8a6eb79d29bc3bbe9fe2b6531c2d8e) and in C++ as the `NODE_MODULE_VERSION` define much earlier. Currently the `node-sqlite3` build scripts access this value only via `process.versions.modules` so for versions before `v0.10.4` the `v8` `MAJOR.MINOR` is used as a proxy.
  - `platform` matches node's `process.platform` like `linux`, `darwin`, and `win32`
  - `arch` matches node's `process.arch` like `x64` or `ia32`
+
+
+### Crosswalking node version to node module ABI
 
 Below is a listing of how node versions crosswalk with the `process.versions.modules` value:
 
@@ -158,3 +176,14 @@ Below is a listing of how node versions crosswalk with the `process.versions.mod
   '0.11.6': 12,
   '0.11.7': 12 }
 ```
+
+## Code implementation
+
+- `package.json` has an `install` target that points at [`./build.js`](https://github.com/developmentseed/node-sqlite3/blob/master/build.js)
+- `build.js` can be run directly but will also properly handle arguments passed to `npm install`
+- A small module called [`binary_name.js`](https://github.com/developmentseed/node-sqlite3/blob/master/lib/binary_name.js) is used both in `build.js` and [`lib/sqlite3.js`](https://github.com/developmentseed/node-sqlite3/blob/master/lib/sqlite3.js#L1-L8) to abstract out the details of what a given binary build is called and where it lives.
+- Binaries are checked for on s3 and if not found a source compile will be the fallback
+- sha1 sums are used to validate binaries before testing
+- a naive test of whether the module can be required is done and a source compile is the fallback if this fails
+- generally this code is quite rough - I plan (@springmeyer) to clean it up eventually into a stand alone module any developer of a C++ addon could use and contribute to.
+- A few scripts live in [build-util](https://github.com/developmentseed/node-sqlite3/tree/master/build-util) that I use to rebuild binaries on mac and upload them to s3 - this will be cleaned up and integrated into js eventually
