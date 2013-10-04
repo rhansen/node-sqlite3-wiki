@@ -11,5 +11,7 @@ Second Android is very restrictive about loading shared libraries, which complic
 The easiest way found so far, has been to compile node-sqlite3 into Node.js as a core module.
 For this, you just have to copy the node-sqlite3 files into the appropriate places in the Node.js dir
 and make Node.js aware of the module by adding it to the node.gyp file and adding "NODE_EXT_LIST_ITEM(node_sqlite3)" to the node_extensions.h.
+Afterwards simply compile the whole thing and the resulting executable should be arm-v5 with node-sqlite3 built-in.
+Obviously, you will have to remove node-sqlite3 from your node_modules, when deploying your code on a device.
 
 This has been tested with Android-NDK-r8e, Node.js v0.10.18 and node-sqlite3 v2.1.14.
