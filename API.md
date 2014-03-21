@@ -18,6 +18,10 @@ Returns a new Database object and automatically opens the database. There is no 
 Sets the execution mode to verbose to produce long stack traces. There is no way to reset this. See the wiki page on [debugging](https://github.com/developmentseed/node-sqlite3/wiki/Debugging) for more information.
 
 
+## Database#close([callback])
+Closes the database. 
+
+* `callback` *(optional)*: If provided, this function will be called when the database was closed successfully or when an error occurred. The first argument is an error object. When it is `null`, closing succeeded. If no callback is provided and an error occurred, an `error` event with the error object as the only parameter will be emitted on the database object. If closing succeeded, a `close` event with no parameters is emitted, regardless of whether a callback was provided or not.
 
 ## Database#run(sql, [param, ...], [callback])
 
