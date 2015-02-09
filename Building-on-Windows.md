@@ -6,7 +6,7 @@
 
 Note: Microsoft is always changing the names of things so it is hard to know exactly what is needed. If you get through these install steps successfully please edit this wiki with how you set up Visual Studio.
 
-Note: you may also need the Win SDK <http://www.microsoft.com/en-us/download/details.aspx?displayLang=en&id=8279> and the
+Note: you may also need the Win SDK <http://www.microsoft.com/en-us/download/details.aspx?displayLang=en&id=8279>
 
 Note: Another link to Visual Studio 2010 (`wdexpress_full.exe`) is <http://go.microsoft.com/?linkid=9816758>
 
@@ -18,7 +18,13 @@ You can use the precompiled binaries/easy installers or you can build node yours
 
 NOTE: be aware of whether you installed the 32 bit or 64 bit version of Node.
 
-## 3. Build the module
+## 3. Install Python
+
+A STABLE version of Python is required to build sqlite3 for windows. Download it from <https://www.python.org/downloads/windows/>. Do not forget to add the Python install directory to your system PATH.
+* Tested and functional with Python 2.7.9. 
+* Tested but not working with Python 3.5.0a1
+
+## 4. Build the module
 
 Type:
 
@@ -33,6 +39,6 @@ TIP: to avoid full recompiles you can install `node-gyp` globally and just do:
 
     node-gyp configure build
 
-## 4. Troubleshooting
+## 5. Troubleshooting
 
 Create an issue if you have trouble. Please provide as much detail about what versions you are using and the exact errors you encountered.
