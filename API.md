@@ -29,7 +29,9 @@ Runs the SQL query with the specified parameters and calls the callback afterwar
 
 * `sql`: The SQL query to run. If the SQL query is invalid and a callback was passed to the function, it is called with an error object containing the error message from SQLite. If no callback was passed and preparing fails, an `error` event will be emitted on the underlying Statement object.
 
-* `param, ...` *(optional)*: When the SQL statement contains placeholders, you can pass them in here. They will be bound to the statement before it is executed. There are three ways of passing bind parameters: directly in the function's arguments, as an array, and as an object for named parameters. This automatically sanitizes inputs RE: [issue #57](https://github.com/mapbox/node-sqlite3/issues/57). In case you want to always keep the callback as the 3rd parameter, you should set param to [] as per [issue #116](https://github.com/mapbox/node-sqlite3/issues/116)
+* `param, ...` *(optional)*: When the SQL statement contains placeholders, you can pass them in here. They will be bound to the statement before it is executed. There are three ways of passing bind parameters: directly in the function's arguments, as an array, and as an object for named parameters. This automatically sanitizes inputs RE: [issue #57](https://github.com/mapbox/node-sqlite3/issues/57). 
+
+In case you want to keep the callback as the 3rd parameter, you should set param to "[]" ( Empty Array ) as per [issue #116](https://github.com/mapbox/node-sqlite3/issues/116)
 ```javascript
       // Directly in the function arguments.
       db.run("UPDATE tbl SET name = ? WHERE id = ?", "bar", 2);
