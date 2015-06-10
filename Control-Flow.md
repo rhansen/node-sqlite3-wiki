@@ -41,7 +41,7 @@ If you call it without a function parameter, the execution mode setting is stick
 
 Puts the execution mode into parallelized. This means that queries scheduled will be run in parallel.
 
-If a callback is provided, it will be called immediately. All database queries scheduled in that callback will run parallelized. After the function returns, the database is set back to its original mode again. Calling `Database#parallelize()` with in nested functions is safe:
+If a callback is provided, it will be called immediately. All database queries scheduled in that callback will run parallelized. After the function returns, the database is set back to its original mode again. Calling `Database#parallelize()` within nested functions is safe:
 
     db.serialize(function() {
        // Queries scheduled here will be serialized.
