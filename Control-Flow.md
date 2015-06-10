@@ -6,7 +6,7 @@
 
 Puts the execution mode into serialized. This means that at most one statement object can execute a query at a time. Other statements wait in a queue until the previous statements executed.
 
-If a callback is provided, it will be called immediately. All database queries scheduled in that callback will be serialized. After the function returns, the database is set back to its original mode again. Calling `Database#serialize()` with in nested functions is safe:
+If a callback is provided, it will be called immediately. All database queries scheduled in that callback will be serialized. After the function returns, the database is set back to its original mode again. Calling `Database#serialize()` within nested functions is safe:
 
     // Queries scheduled here will run in parallel.
 
