@@ -1,6 +1,6 @@
 # Control Flow
 
-`node-sqlite3` provides two functions to help controlling the execution flow of statements. The default mode is to execute statements in parallel. However, the `Database#close` method will always run in exclusive mode, meaning it waits until all previous queries have completed and `node-sqlite3` will not run any other queries while a close is pending.
+`node-sqlite3` provides two functions to help control the execution flow of statements. The default mode is to execute statements in parallel. However, the `Database#close` method will always run in exclusive mode, meaning it waits until all previous queries have completed and `node-sqlite3` will not run any other queries while a close is pending.
 
 ## Database#serialize([callback])
 
