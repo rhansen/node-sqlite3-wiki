@@ -142,7 +142,7 @@ The callback behavior is identical to the `Database#run` method with the differe
 
 ## Statement#get([param, ...], [callback])
 
-Binds parameters, executes the statement and retrieves the first result row. The function returns the Statement object to allow for function chaining. The parameters are the same as the Statement#run function, with the following differences:
+Binds parameters, executes the statement and retrieves he first result row. The function returns the Statement object to allow for function chaining. The parameters are the same as the Statement#run function, with the following differences:
 
 The signature of the callback is `function(err, row) {}`. If the result set is empty, the second parameter is undefined, otherwise it is an object containing the values for the first row. Like with `Statement#run`, the statement will not be finalized after executing this function.
 
