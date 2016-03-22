@@ -1,22 +1,21 @@
-**NOTE:** Requires Visual Studio 2010. I didn't test with the Express version, but it *should* do.
+Binaries are available of node-sqlite3 for windows, so you:
 
-## 1. Install Visual Studio 2010 with C++ compiler
+ - do not need to compile yourself
+ - you also then do not need visual studio compiler or python
 
-<http://www.microsoft.com/visualstudio/eng/products/visual-studio-express-products>
+See https://github.com/mapbox/node-sqlite3/wiki/Binaries for how things work with binaries.
 
-Note: Microsoft is always changing the names of things so it is hard to know exactly what is needed. If you get through these install steps successfully please edit this wiki with how you set up Visual Studio.
+If you want to source compile, or if you are running a custom node version for which we do not provide binaries for then read on:
 
-Note: you may also need the Win SDK <http://www.microsoft.com/en-us/download/details.aspx?displayLang=en&id=8279>
+## 1. Install Node
 
-Note: Another link to Visual Studio 2010 (`wdexpress_full.exe`) is <http://go.microsoft.com/?linkid=9816758>
-
-## 2. Install Node
-
-Make sure you have the latest node - either v0.8.x or v0.10.x. v0.10.x is ideal since it will contain the latest `node-gyp`. `node-gyp` is critical for building `node-sqlite3`.
-
-You can use the precompiled binaries/easy installers or you can build node yourself. Just be aware that `node-gyp` prefers the precompiled installer the provides a stable release. If you build a development version of node from source `node-gyp` will complain about needing to know the path to the headers. 
+Make sure you have the latest stable release of node - at the time of writing that is either v0.10.x or v4.
 
 NOTE: be aware of whether you installed the 32 bit or 64 bit version of Node.
+
+## 1. Install Visual Studio with C++ compiler
+
+You need to install the same visual studio version that the node.exe you are using was built with. Because this changes, we do not document that version here.
 
 ## 3. Install Python
 
@@ -28,16 +27,13 @@ A STABLE version of Python is required to build sqlite3 for windows. Download it
 
 Type:
 
-    npm install sqlite
-
+    npm install sqlite --build-from-source
 
 Or download the git repo and inside the repo type:
 
-    npm install
+    npm install --build-from-source
 
-TIP: to avoid full recompiles you can install `node-gyp` globally and just do:
-
-    node-gyp configure build
+Note: `--build-from-source` is an option understood by https://github.com/mapbox/node-pre-gyp and it triggers a source compile instead of installation from pre-compiled binaries.
 
 ## 5. Troubleshooting
 
