@@ -27,11 +27,11 @@ A STABLE version of Python is required to build sqlite3 for windows. Download it
 
 Type:
 
-    npm install sqlite --build-from-source
+    npm install sqlite --build-from-source=sqlite3
 
 Or download the git repo and inside the repo type:
 
-    npm install --build-from-source
+    npm install --build-from-source=sqlite3
 
 Note: `--build-from-source` is an option understood by https://github.com/mapbox/node-pre-gyp and it triggers a source compile instead of installation from pre-compiled binaries.
 
