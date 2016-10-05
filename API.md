@@ -22,6 +22,15 @@ Closes the database.
 
 * `callback` *(optional)*: If provided, this function will be called when the database was closed successfully or when an error occurred. The first argument is an error object. When it is `null`, closing succeeded. If no callback is provided and an error occurred, an `error` event with the error object as the only parameter will be emitted on the database object. If closing succeeded, a `close` event with no parameters is emitted, regardless of whether a callback was provided or not.
 
+## Database#configure(option, value)
+
+Set a configuration option for the database. Valid options are:
+
+* [Tracing & profiling](https://www.sqlite.org/c3ref/profile.html)
+  * trace: provide a function callback as a value. Invoked when an SQL statement executes, with a rendering of the statement text.
+  * profile: provide a function a function callback. Invoked every time an SQL statement executes.
+* busyTimeout: provide an integer as a value. Sets the [busy timeout](https://www.sqlite.org/c3ref/busy_timeout.html).
+
 ## Database#run(sql, [param, ...], [callback])
 
 Runs the SQL query with the specified parameters and calls the callback afterwards. It does not retrieve any result data. The function returns the Database object for which it was called to allow for function chaining.
