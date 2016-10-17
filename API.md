@@ -135,7 +135,7 @@ Resets the row cursor of the statement and preserves the parameter bindings. Use
 
 ## Statement#finalize([callback])
 
-Finalizes the statement. This is typically optional, but if you experience long delays before the next query is executed, explicitly finalizing your statement might be necessary. This might be the case when you run an exclusive query (see section *Serialization*). After the statement is finalized, all further function calls on that statement object will throw errors.
+Finalizes the statement. This is typically optional, but if you experience long delays before the next query is executed, explicitly finalizing your statement might be necessary. This might be the case when you run an exclusive query (see section *Control Flow*). After the statement is finalized, all further function calls on that statement object will throw errors.
 
 
 
