@@ -8,30 +8,34 @@ Puts the execution mode into serialized. This means that at most one statement o
 
 If a callback is provided, it will be called immediately. All database queries scheduled in that callback will be serialized. After the function returns, the database is set back to its original mode again. Calling `Database#serialize()` within nested functions is safe:
 
-    // Queries scheduled here will run in parallel.
+```js
+// Queries scheduled here will run in parallel.
 
-    db.serialize(function() {
-      // Queries scheduled here will be serialized.
-      db.serialize(function() {
-        // Queries scheduled here will still be serialized.
-      });
-      // Queries scheduled here will still be serialized.
-    });
+db.serialize(function() {
+  // Queries scheduled here will be serialized.
+  db.serialize(function() {
+    // Queries scheduled here will still be serialized.
+  });
+  // Queries scheduled here will still be serialized.
+});
 
-    // Queries scheduled here will run in parallel again.
+// Queries scheduled here will run in parallel again.
+```
 
 Note that queries scheduled not *directly* in the callback function are not necessarily serialized:
 
-    db.serialize(function() {
-      // These two queries will run sequentially.
-      db.run("CREATE TABLE foo (num)");
-      db.run("INSERT INTO foo VALUES (?)", 1, function() {
-        // These queries will run in parallel and the second query will probably
-        // fail because the table might not exist yet.
-        db.run("CREATE TABLE bar (num)");
-        db.run("INSERT INTO bar VALUES (?)", 1);
-      });
-    });
+```js
+db.serialize(function() {
+  // These two queries will run sequentially.
+  db.run("CREATE TABLE foo (num)");
+  db.run("INSERT INTO foo VALUES (?)", 1, function() {
+    // These queries will run in parallel and the second query will probably
+    // fail because the table might not exist yet.
+    db.run("CREATE TABLE bar (num)");
+    db.run("INSERT INTO bar VALUES (?)", 1);
+  });
+});
+```
 
 If you call it without a function parameter, the execution mode setting is sticky and won't change until the next call to `Database#parallelize`.
 
@@ -43,12 +47,14 @@ Puts the execution mode into parallelized. This means that queries scheduled wil
 
 If a callback is provided, it will be called immediately. All database queries scheduled in that callback will run parallelized. After the function returns, the database is set back to its original mode again. Calling `Database#parallelize()` within nested functions is safe:
 
-    db.serialize(function() {
-       // Queries scheduled here will be serialized.
-       db.parallelize(function() {
-         // Queries scheduled here will run in parallel.
-       });
-       // Queries scheduled here will be serialized again.
-    });
+```js
+db.serialize(function() {
+   // Queries scheduled here will be serialized.
+   db.parallelize(function() {
+     // Queries scheduled here will run in parallel.
+   });
+   // Queries scheduled here will be serialized again.
+});
+```
 
 If you call it without a function parameter, the execution mode setting is sticky and won't change until the next call to `Database#serialize`.
