@@ -13,6 +13,6 @@ Loads a compiled SQLite extension into the database connection object.
 
 ## Building an Extension
 
-**half**: The SQLite documentation gives an example of a user-defined function "half" which takes a number and returns a result (the number diveded by two): http://www.sqlite.org/cvstrac/wiki?p=LoadableExtensions
+**half**: The SQLite documentation gives an example of a user-defined function "half" which takes a number and returns a result (the number divided by two): http://www.sqlite.org/cvstrac/wiki?p=LoadableExtensions
 
 **rank**: A ready-to `make` example from the full-text search docs https://github.com/coolaj86/sqlite3-fts4-rank . See also: http://www.mail-archive.com/sqlite-users@sqlite.org/msg71740.html
