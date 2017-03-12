@@ -28,7 +28,7 @@ Set a configuration option for the database. Valid options are:
 
 * [Tracing & profiling](https://www.sqlite.org/c3ref/profile.html)
   * trace: provide a function callback as a value. Invoked when an SQL statement executes, with a rendering of the statement text.
-  * profile: provide a function a function callback. Invoked every time an SQL statement executes.
+  * profile: provide a function callback. Invoked every time an SQL statement executes.
 * busyTimeout: provide an integer as a value. Sets the [busy timeout](https://www.sqlite.org/c3ref/busy_timeout.html).
 
 ## Database#run(sql, [param, ...], [callback])
