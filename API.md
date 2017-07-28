@@ -78,7 +78,6 @@ Runs the SQL query with the specified parameters and calls the callback with the
 The signature of the callback is `function(err, row) {}`. If the result set is empty, the second parameter is `undefined`, otherwise it is an object containing the values for the first row. The property names correspond to the column names of the result set. It is impossible to access them by column index; the only supported way is by column name.
 
 
-
 ## Database#all(sql, [param, ...], [callback])
 
 Runs the SQL query with the specified parameters and calls the callback with all result rows afterwards. The function returns the Database object to allow for function chaining. The parameters are the same as the `Database#run` function, with the following differences:
@@ -154,6 +153,8 @@ The callback behavior is identical to the `Database#run` method with the differe
 Binds parameters, executes the statement and retrieves he first result row. The function returns the Statement object to allow for function chaining. The parameters are the same as the Statement#run function, with the following differences:
 
 The signature of the callback is `function(err, row) {}`. If the result set is empty, the second parameter is undefined, otherwise it is an object containing the values for the first row. Like with `Statement#run`, the statement will not be finalized after executing this function.
+
+Using this method can leave the database locked, as the database awaits further calls to `Statement#get` to retrieve subsequent rows. To inform the database that you are finished retrieving rows, you should either finalize (with `Statement#finalize`) or reset (with `Statement#reset`) the statement.
 
 
 
