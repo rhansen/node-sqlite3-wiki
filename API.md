@@ -1,5 +1,7 @@
 # API
 
+
+
 ## new sqlite3.Database(filename, [mode], [callback])
 
 Returns a new Database object and automatically opens the database. There is no separate method to open the database.
@@ -16,6 +18,8 @@ Returns a new Database object and automatically opens the database. There is no 
 
 Sets the execution mode to verbose to produce long stack traces. There is no way to reset this. See the wiki page on [debugging](https://github.com/developmentseed/node-sqlite3/wiki/Debugging) for more information.
 
+
+# **Database**
 
 ## Database#close([callback])
 Closes the database. 
@@ -70,7 +74,6 @@ In case you want to keep the callback as the 3rd parameter, you should set param
   If execution was successful, the `this` object will contain two properties named `lastID` and `changes` which contain the value of the last inserted row ID and the number of rows affected by this query respectively. Note that `lastID` **only** contains valid information when the query was a successfully completed `INSERT` statement and `changes` **only** contains valid information when the query was a successfully completed `UPDATE` or `DELETE` statement. In all other cases, the content of these properties is inaccurate and should not be used. The `.run()` function is the only query method that sets these two values; all other query methods such as `.all()` or `.get()` don't retrieve these values.
 
 
-
 ## Database#get(sql, [param, ...], [callback])
 
 Runs the SQL query with the specified parameters and calls the callback with the first result row afterwards. The function returns the Database object to allow for function chaining. The parameters are the same as the `Database#run` function, with the following differences:
@@ -116,7 +119,7 @@ Prepares the SQL statement and optionally binds the specified parameters and cal
 
 When preparing was successful, the first and only argument to the callback is `null`, otherwise it is the error object. When bind parameters are supplied, they are bound to the prepared statement before calling the callback.
 
-
+# **Statement**
 
 ## Statement#bind([param, ...], [callback])
 
