@@ -16,6 +16,7 @@ Returns a new Database object and automatically opens the database. There is no 
 
 Sets the execution mode to verbose to produce long stack traces. There is no way to reset this. See the wiki page on [debugging](https://github.com/developmentseed/node-sqlite3/wiki/Debugging) for more information.
 
+***
 
 # **Database**
 
@@ -117,6 +118,8 @@ Prepares the SQL statement and optionally binds the specified parameters and cal
 
 When preparing was successful, the first and only argument to the callback is `null`, otherwise it is the error object. When bind parameters are supplied, they are bound to the prepared statement before calling the callback.
 
+***
+
 # **Statement**
 
 ## Statement#bind([param, ...], [callback])
@@ -180,3 +183,4 @@ Like with `Statement#run`, the statement will not be finalized after executing t
 If you know that a query only returns a very limited number of rows, it might be more convenient to use `Statement#all` to retrieve all rows at once.
 
 There is currently no way to abort execution!
+
