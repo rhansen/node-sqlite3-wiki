@@ -1,6 +1,4 @@
-# API
-
-
+# Main
 
 ## new sqlite3.Database(filename, [mode], [callback])
 
