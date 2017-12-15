@@ -38,29 +38,18 @@ npm install sqlite3 --target_arch=ia32
 
 We have not yet built binaries for all possible variants.
 
-Users that find a binary is not available for their platform are encouraged to trigger a custom source compile that will package a binary for later distribution. To do this run:
-
-```sh
-npm install node-pre-gyp
-node-pre-gyp package
-```
-
-This will drop a tarball (`.tar.gz`) in the `build/stage/` folder within the installed module folder.
-
-To submit your build `tar.gz` you can create a new github issue and provide a link to the tarball.
-
-### Available binaries
-
-Currently available binaries [are listed here](http://node-sqlite3.s3.amazonaws.com/index.html?path=Release/).
+We can only support providing binaries for platforms which can be automated via a freely available continuous integration service. So we support windows via https://ci.appveyor.com and linux/osx via travis-ci.org.
 
 ### Binary versioning 
 
 Binaries are versioned based on the `node-sqlite3` version, node version, platform, and architecture. Given this amounts to many versions we have not yet created binaries for all possible combinations.
 
-For more info about the versioning see https://github.com/springmeyer/node-pre-gyp/wiki/Versioning.
+For more info about the versioning see https://github.com/mapbox/node-pre-gyp#versioning
 
-For info about how node versions crosswalk with their ABI version see: https://github.com/springmeyer/node-pre-gyp/wiki/Node-ABI
-
+For info about how node versions crosswalk with their ABI version see:
+ - https://github.com/mapbox/node-pre-gyp/blob/master/lib/util/abi_crosswalk.json
+ - https://nodejs.org/download/release/index.json
+ - https://github.com/mapbox/node-pre-gyp/blob/master/scripts/abi_crosswalk.js
 
 ## Code implementation
 
