@@ -10,7 +10,7 @@ If you've landed here due to a failed install of `node-sqlite3` then feel free t
 
 ### Background
 
-The Node.js project [is discussing the design of a system for binary deployments](https://github.com/isaacs/npm/issues/1891) and a build farm for C++ modules like `node-sqlite3`. But since this does not exist yet we are leveraging [node-pre-gyp](https://github.com/springmeyer/node-pre-gyp) and S3 hosting.
+The Node.js project [is discussing the design of a system for binary deployments](https://github.com/npm/npm/issues/1891) and a build farm for C++ modules like `node-sqlite3`. But since this does not exist yet we are leveraging [node-pre-gyp](https://github.com/springmeyer/node-pre-gyp) and S3 hosting.
 
 ### Forcing a source compile
 
