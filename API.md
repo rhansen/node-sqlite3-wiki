@@ -30,7 +30,20 @@ Returns a new Database object and automatically opens the database. There is no 
 
 * `mode` *(optional)*: One or more of `sqlite3.OPEN_READONLY`, `sqlite3.OPEN_READWRITE` and `sqlite3.OPEN_CREATE`. The default value is `OPEN_READWRITE | OPEN_CREATE`.
 
-* `callback` *(optional)*: If provided, this function will be called when the database was opened successfully or when an error occurred. The first argument is an error object. When it is `null`, opening succeeded. If no callback is provided and an error occurred, an `error` event with the error object as the only parameter will be emitted on the database object. If opening succeeded, an `open` event with no parameters is emitted, regardless of whether a callback was provided or not.
+* `callback` *(optional)*: If provided, this function will be called when the
+  database was opened successfully or when an error occurred. The callback is
+  guaranteed to be called asynchronously (`sqlite3.Database()` will return
+  before the callback is called). If the callback is a regular function (not an
+  [arrow
+  function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions)),
+  the function's bound context (the
+  [`this`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this)
+  keyword) is set to the Database object. The first and only argument is an
+  error object. When it is `null`, opening succeeded. If no callback is provided
+  and an error occurred, an `error` event with the error object as the only
+  parameter will be emitted on the database object. If opening succeeded, an
+  `open` event with no parameters is emitted, regardless of whether a callback
+  was provided or not.
 
 
 
@@ -45,7 +58,19 @@ Sets the execution mode to verbose to produce long stack traces. There is no way
 ## Database#close([callback])
 Closes the database. 
 
-* `callback` *(optional)*: If provided, this function will be called when the database was closed successfully or when an error occurred. The first argument is an error object. When it is `null`, closing succeeded. If no callback is provided and an error occurred, an `error` event with the error object as the only parameter will be emitted on the database object. If closing succeeded, a `close` event with no parameters is emitted, regardless of whether a callback was provided or not.
+* `callback` *(optional)*: If provided, this function will be called when the
+  database was closed successfully or when an error occurred. The callback is
+  guaranteed to be called asynchronously (`close()` will return before the
+  callback is called). If the callback is a regular function (not an [arrow
+  function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions)),
+  the function's bound context (the
+  [`this`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this)
+  keyword) is set to the Database object. The first and only argument is an
+  error object. When it is `null`, closing succeeded. If no callback is provided
+  and an error occurred, an `error` event with the error object as the only
+  parameter will be emitted on the database object. If closing succeeded, a
+  `close` event with no parameters is emitted, regardless of whether a callback
+  was provided or not.
 
 ## Database#configure(option, value)
 
